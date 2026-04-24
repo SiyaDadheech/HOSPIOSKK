@@ -27,16 +27,37 @@ const BiometricAuth = ({ onAuthenticated }: BiometricAuthProps) => {
     medicalHistory: ['Hypertension', 'Diabetes Type 2']
   };
 
-  const handleBiometricScan = () => {
-    setAuthMethod('biometric');
-    setIsScanning(true);
-    
-    // Simulate biometric scanning
-    setTimeout(() => {
-      setIsScanning(false);
-      onAuthenticated(mockPatientData);
-    }, 3000);
-  };
+const handleBiometricScan = async () => {
+
+  console.log("Biometric scan started");
+
+  try {
+
+    const pidOptions = `
+      <PidOptions ver="1.0">
+        <Opts fCount="1" fType="2" format="0" pidVer="2.0" timeout="20000"/>
+      </PidOptions>
+    `;
+
+    const response = await fetch("http://127.0.0.1:11100/capture", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/xml"
+      },
+      body: pidOptions
+    });
+
+    const data = await response.text();
+
+    console.log("Fingerprint Response:", data);
+
+  } catch (error) {
+
+    console.error("Fingerprint error:", error);
+
+  }
+
+};
 
   const handleAadhaarAuth = () => {
     if (aadhaarNumber.length === 12) {
