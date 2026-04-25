@@ -34,11 +34,13 @@ const SimpleDoctorList = ({ onSelectDoctor, language }: SimpleDoctorListProps) =
     const fetchDoctors = async () => {
       try {
         const data = await getDoctors();
+        console.log("API DATA:", data);  // 👈 ADD THIS
+
 
         // ⭐ Backend data + Frontend slots
         const formattedDoctors = data.map((doc: any) => ({
           id: doc.id,
-          name: doc.doctorName,
+          name: doc.doctors_name,
           specialization: doc.specialization,
           experience: 10,
           rating: 4.5,
