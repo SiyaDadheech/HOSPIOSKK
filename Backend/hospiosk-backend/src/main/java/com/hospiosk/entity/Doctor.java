@@ -97,19 +97,17 @@ public class Doctor {
     private String specialization;
 
     @Column(name = "available_slots")
-    private int availableSlots;
+    private Integer availableSlots; // ✅ FIXED
 
     @Column(name = "slot_timings")
     private String slotTimings;
 
-    // Default Constructor
-    public Doctor() {
-    }
+    // Default Constructor (IMPORTANT)
+    public Doctor() {}
 
     // Parameterized Constructor
     public Doctor(Long id, String doctorName, String specialization,
-                  int availableSlots, String slotTimings) {
-
+                  Integer availableSlots, String slotTimings) {
         this.id = id;
         this.doctorName = doctorName;
         this.specialization = specialization;
@@ -117,42 +115,42 @@ public class Doctor {
         this.slotTimings = slotTimings;
     }
 
-    // Getters and Setters
+    // Getters & Setters
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getDoctorName() {
         return doctorName;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
-    }
-
     public String getSpecialization() {
         return specialization;
+    }
+
+    public Integer getAvailableSlots() {   // ✅ FIXED
+        return availableSlots;
+    }
+
+    public String getSlotTimings() {
+        return slotTimings;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
 
-    public int getAvailableSlots() {
-        return availableSlots;
-    }
-
-    public void setAvailableSlots(int availableSlots) {
+    public void setAvailableSlots(Integer availableSlots) {  // ✅ FIXED
         this.availableSlots = availableSlots;
-    }
-
-    public String getSlotTimings() {
-        return slotTimings;
     }
 
     public void setSlotTimings(String slotTimings) {
