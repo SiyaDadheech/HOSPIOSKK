@@ -39,14 +39,16 @@ const SimpleDoctorList = ({ onSelectDoctor, language }: SimpleDoctorListProps) =
 
         // ⭐ Backend data + Frontend slots
         const formattedDoctors = data.map((doc: any) => ({
-          id: doc.id,
-          name: doc.doctors_name,
-          specialization: doc.specialization,
-          experience: 10,
-          rating: 4.5,
-          availableSlots: defaultSlots,
-          image: '👨‍⚕️'
-        }));
+  id: doc.id,
+  name: doc.doctorName, // ✅ FIXED
+  specialization: doc.specialization,
+  experience: 10,
+  rating: 4.5,
+  availableSlots: doc.slotTimings
+    ? doc.slotTimings.split(",")  // ✅ FIXED (real slots)
+    : [],
+  image: '👨‍⚕️'
+}));
 
         setDoctors(formattedDoctors);
 
