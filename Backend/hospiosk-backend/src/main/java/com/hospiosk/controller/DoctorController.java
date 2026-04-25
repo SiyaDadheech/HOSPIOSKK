@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "*")   // 🔥 YE ADD KARNA HAI
 @RestController
 @RequestMapping("/doctors")
 public class DoctorController {
@@ -30,8 +32,6 @@ public class DoctorController {
     
     @GetMapping("/available-slots/{doctorName}")
     public List<String> getAvailableSlots(@PathVariable String doctorName) {
-
         return doctorService.getAvailableSlots(doctorName);
     }
-
 }
