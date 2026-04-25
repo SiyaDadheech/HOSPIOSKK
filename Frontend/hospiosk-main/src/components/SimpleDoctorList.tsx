@@ -50,6 +50,7 @@ const SimpleDoctorList = ({ onSelectDoctor, language }: SimpleDoctorListProps) =
   image: '👨‍⚕️'
 }));
 
+         console.log("FORMATTED:", formattedDoctors);
         setDoctors(formattedDoctors);
 
       } catch (err) {
@@ -141,3 +142,4 @@ const SimpleDoctorList = ({ onSelectDoctor, language }: SimpleDoctorListProps) =
 };
 
 export default SimpleDoctorList;
+
